@@ -1,0 +1,48 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: deployment_name
+  labels:
+    #Project ID
+    app: scott-assessment
+spec:
+  #Run two instances of our application
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: scott-assessment
+    spec:
+      #Container details
+      containers:
+        - name: container_name
+          image: gcr.io/scott-assessment/image
+          imagePullPolicy: Always
+          #Ports to expose
+          ports:
+          - containerPort: 8000
+
+kubectl create -f deployment.yml
+kubectl get deployments
+kubectl get pods
+...........................................................................................................
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nginx
+spec:
+  selector:
+    matchLabels:
+      run: my-nginx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: my-nginx
+    spec:
+      containers:
+      - name: my-nginx
+        image: nginx
+        ports:
+        - containerPort: 80
