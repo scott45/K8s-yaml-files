@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  #Service name
+  name: svc_name
+spec:
+  selector:
+    app: scott-assessment
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: LoadBalancer
+
+kubectl create -f service.yml
+kubectl get services
+....................................................................................................
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nginx
+  labels:
+    run: my-nginx
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+  selector:
+    run: my-nginx
