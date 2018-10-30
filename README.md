@@ -1,3 +1,3 @@
 # K8s-yaml-files
 
-Sample scripts for Kubernetes configuration
+Sample scripts for Kubernetes configuration.
